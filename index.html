@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">    
+    <head>
+        <meta charset="UTF-8">
+        <title>Club Deportivo</title>
+        <style>
+            /* Reset y estilos base */
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            /* Fondo claro */
+            body {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                background-color: #f5f7fa;
+                min-height: 100vh;
+                color: #333;
+            }
+
+            /* Header */
+            header {
+                background: white;
+                padding: 30px;
+                text-align: center;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            /* Tipografía - Títulos */
+            h1 {
+                color: #667eea;
+                font-size: 48px;
+                font-weight: 700;
+                margin-bottom: 20px;
+            }
+
+            h2 {
+                color: #000000;
+                font-size: 36px;
+                font-weight: 600;
+                margin-bottom: 20px;
+            }
+
+            /* Logo del header */
+            .logo {
+                max-width: 250px;
+                height: auto;
+                margin-bottom: 20px;
+            }
+
+            /* Tipografía - Párrafos */
+            p {
+                font-size: 18px;
+                color: #666;
+                margin-bottom: 30px;
+                line-height: 1.6;
+            }
+
+            /* Navegación con márgenes y padding */
+            nav a {
+                display: inline-block;
+                margin: 0 20px;
+                padding: 12px 24px;
+                background: #667eea;
+                color: white;
+                text-decoration: none;
+                border-radius: 25px;
+                transition: all 0.3s ease;
+                font-weight: 600;
+                font-size: 14px;
+            }
+
+            nav a:hover {
+                background: #764ba2;
+                transform: translateY(-2px);
+                box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            }
+
+            /* Contenedor centrado en pantalla */
+            main {
+                max-width: 600px;
+                margin: 40px auto;
+                padding: 0 20px;
+            }
+
+            /* Card del formulario */
+            section {
+                background: white;
+                padding: 50px;
+                margin: 20px;
+                border-radius: 15px;
+                border: 1px solid #e0e5ea;
+                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            }
+
+            /* Contenedor del formulario */
+            form {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            /* Inputs - márgenes, padding, bordes */
+            input,
+            button {
+                padding: 14px 18px;
+                border: 2px solid #ddd;
+                border-radius: 8px;
+                font-size: 16px;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                transition: all 0.3s ease;
+            }
+
+            input {
+                width: 100%;
+                color: #333;
+                background-color: #fafbfc;
+            }
+
+            input::placeholder {
+                color: #999;
+            }
+
+            input:focus {
+                outline: none;
+                border-color: #667eea;
+                background-color: #fff;
+                box-shadow: 0 0 10px rgba(102, 126, 234, 0.3);
+            }
+
+            /* Botón con estilos */
+            button {
+                padding: 14px 18px;
+                background-color: #667eea;
+                color: white;
+                border: none;
+                border-radius: 8px;
+                font-size: 16px;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                margin-top: 10px;
+            }
+
+            button:hover {
+                background-color: #764ba2;
+                transform: translateY(-2px);
+                box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            }
+
+            /* Footer */
+            footer {
+                background: white;
+                text-align: center;
+                padding: 20px;
+                margin-top: 50px;
+                box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+                font-size: 14px;
+                color: #666;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <img src="sportclub-logo.png" alt="Logo Sport Club" class="logo">
+            <h1>Club Deportivo</h1> 
+            <nav>
+                <a href="#">Inicio</a>
+                <a href="#">Planes</a>
+                <a href="#">Reservas</a>
+            </nav>
+        </header>
+        <main>
+            <section>
+                <h2>Bienvenido a mi club</h2>
+                <p>Entrena con los mejores Profesionales.</p>
+                
+                <form>
+                    <input type="email" placeholder="Tu email..." required>
+                    <input type="text" placeholder="Tu nombre..." required>
+                    <button type="submit">Ingresar</button>
+                </form>
+            </section>
+        </main>
+        <footer>
+            <p>Copyright 2024 - Club Deportivo</p>
+        </footer>
+    </body>
+</html>
