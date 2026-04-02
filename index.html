@@ -11,48 +11,56 @@
                 box-sizing: border-box;
             }
 
-            /* Fondo claro */
+            /* Fondo oscuro global */
             body {
                 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-                background-color: #f5f7fa;
+                background-color: #000;
                 min-height: 100vh;
-                color: #333;
+                color: #f5f5f5;
             }
 
             /* Header */
             header {
-                background: white;
-                padding: 30px;
+                background: #111;
+                padding: 80px 30px 40px; /* espacio superior extra para logo posicionado */
                 text-align: center;
-                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                box-shadow: 0 2px 10px rgba(255, 255, 255, 0.08);
+                position: relative;
+                color: #f5f5f5;
+            }
+
+            /* Logo en esquina superior izquierda */
+            .logo {
+                position: absolute;
+                top: 20px;
+                left: 20px;
+                max-width: 140px;
+                height: auto;
             }
 
             /* Tipografía - Títulos */
             h1 {
-                color: #667eea;
+                color: #fff;
                 font-size: 48px;
                 font-weight: 700;
                 margin-bottom: 20px;
             }
 
             h2 {
-                color: #000000;
+                color: #e6e6e6;
                 font-size: 36px;
                 font-weight: 600;
                 margin-bottom: 20px;
             }
 
-            /* Logo del header */
-            .logo {
-                max-width: 250px;
-                height: auto;
-                margin-bottom: 20px;
+            p {
+                color: #ddd;
             }
 
             /* Tipografía - Párrafos */
             p {
                 font-size: 18px;
-                color: #666;
+                color: #ddd;
                 margin-bottom: 30px;
                 line-height: 1.6;
             }
@@ -101,6 +109,35 @@
                 gap: 20px;
             }
 
+            section {
+                background: #1a1a1a;
+                padding: 50px;
+                margin: 20px;
+                border-radius: 15px;
+                border: 1px solid #333;
+                box-shadow: 0 8px 25px rgba(255, 255, 255, 0.08);
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 0 20px;
+                padding: 12px 24px;
+                background: #38bdf8;
+                color: #000;
+                text-decoration: none;
+                border-radius: 25px;
+                transition: all 0.3s ease;
+                font-weight: 600;
+                font-size: 14px;
+            }
+
+            nav a:hover {
+                background: #5eead4;
+                color: #000;
+                transform: translateY(-2px);
+                box-shadow: 0 5px 15px rgba(56, 189, 248, 0.4);
+            }
+
             /* Inputs - márgenes, padding, bordes */
             input,
             button {
@@ -114,12 +151,13 @@
 
             input {
                 width: 100%;
-                color: #333;
-                background-color: #fafbfc;
+                color: #f5f5f5;
+                background-color: #222;
+                border-color: #444;
             }
 
             input::placeholder {
-                color: #999;
+                color: #aaa;
             }
 
             input:focus {
@@ -149,15 +187,32 @@
                 box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
             }
 
+            .form-links {
+                margin-top: 20px;
+                text-align: center;
+                color: #d0d0d0;
+                font-size: 14px;
+            }
+
+            .form-links a {
+                color: #38bdf8;
+                text-decoration: none;
+                font-weight: 600;
+            }
+
+            .form-links a:hover {
+                text-decoration: underline;
+            }
+
             /* Footer */
             footer {
-                background: white;
+                background: #111;
                 text-align: center;
                 padding: 20px;
                 margin-top: 50px;
-                box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+                box-shadow: 0 -2px 10px rgba(255, 255, 255, 0.08);
                 font-size: 14px;
-                color: #666;
+                color: #ccc;
             }
         </style>
     </head>
@@ -181,6 +236,11 @@
                     <input type="text" placeholder="Tu nombre..." required>
                     <button type="submit">Ingresar</button>
                 </form>
+                <div class="form-links">
+                    <a href="#">¿Olvidaste tu contraseña?</a>
+                    <span> | </span>
+                    <a href="#">Regístrate</a>
+                </div>
             </section>
         </main>
         <footer>
