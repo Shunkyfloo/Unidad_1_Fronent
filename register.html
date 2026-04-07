@@ -53,6 +53,43 @@
                 margin-bottom: 15px;
             }
 
+            /* Navegación con márgenes y padding */
+            nav a {
+                display: inline-block;
+                margin: 0 18px;
+                padding: 12px 30px;
+                background: #33c7ff;
+                color: #021b2e;
+                text-decoration: none;
+                border-radius: 999px;
+                transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+                font-weight: 700;
+                font-size: 14px;
+                box-shadow: 0 10px 20px rgba(51, 199, 255, 0.18);
+            }
+
+            nav a:hover {
+                background: #58d7ff;
+                color: #000;
+                transform: translateY(-2px);
+                box-shadow: 0 0 24px rgba(88, 215, 255, 0.75), inset 0 0 8px rgba(255, 255, 255, 0.2);
+            }
+
+            /* Main content */
+            h1 {
+                color: #fff;
+                font-size: 48px;
+                font-weight: 700;
+                margin-bottom: 20px;
+            }
+
+            h2 {
+                color: #e6e6e6;
+                font-size: 28px;
+                font-weight: 600;
+                margin-bottom: 15px;
+            }
+
             /* Main content */
             main {
                 max-width: 600px;
@@ -105,6 +142,7 @@
                 outline: none;
                 border-color: #667eea;
                 background-color: #fff;
+                color: #000;
                 box-shadow: 0 0 10px rgba(102, 126, 234, 0.3);
             }
 
@@ -199,7 +237,7 @@
             <img src="sportclub-logo.png" alt="Logo Sport Club" class="logo">
             <h1>Club Deportivo</h1>
             <nav>
-                <a href="index.html">Inicio</a>
+                <a href="#">Inicio</a>
                 <a href="#">Planes</a>
                 <a href="#">Reservas</a>
             </nav>
