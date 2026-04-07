@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Registro - Club Deportivo</title>
+        <style>
+            /* Reset y estilos base */
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            /* Fondo oscuro global */
+            body {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                background-color: #000;
+                min-height: 100vh;
+                color: #f5f5f5;
+            }
+
+            /* Header */
+            header {
+                background: #111;
+                padding: 80px 30px 40px;
+                text-align: center;
+                box-shadow: 0 2px 10px rgba(255, 255, 255, 0.08);
+                position: relative;
+                color: #f5f5f5;
+            }
+
+            /* Logo en esquina superior izquierda */
+            .logo {
+                position: absolute;
+                top: 20px;
+                left: 20px;
+                max-width: 160px;
+                height: auto;
+            }
+
+            /* Tipografía - Títulos */
+            h1 {
+                color: #fff;
+                font-size: 48px;
+                font-weight: 700;
+                margin-bottom: 20px;
+            }
+
+            h2 {
+                color: #e6e6e6;
+                font-size: 28px;
+                font-weight: 600;
+                margin-bottom: 15px;
+            }
+
+            /* Main content */
+            main {
+                max-width: 600px;
+                margin: 50px auto;
+                padding: 0 20px;
+            }
+
+            /* Sección del formulario */
+            section {
+                background: #111;
+                padding: 40px;
+                border-radius: 15px;
+                border: 1px solid #333;
+                box-shadow: 0 8px 25px rgba(255, 255, 255, 0.08);
+            }
+
+            /* Contenedor del formulario */
+            form {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            /* Inputs - márgenes, padding, bordes */
+            input,
+            select,
+            button {
+                padding: 14px 18px;
+                border: 2px solid #ddd;
+                border-radius: 8px;
+                font-size: 16px;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                transition: all 0.3s ease;
+            }
+
+            input,
+            select {
+                width: 100%;
+                color: #f5f5f5;
+                background-color: #222;
+                border-color: #444;
+            }
+
+            input::placeholder {
+                color: #aaa;
+            }
+
+            input:focus,
+            select:focus {
+                outline: none;
+                border-color: #667eea;
+                background-color: #fff;
+                box-shadow: 0 0 10px rgba(102, 126, 234, 0.3);
+            }
+
+            /* Checkbox styling */
+            .checkbox-group {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .checkbox-group input[type="checkbox"] {
+                width: auto;
+                margin: 0;
+            }
+
+            .checkbox-group label {
+                font-size: 16px;
+                color: #f5f5f5;
+            }
+
+            /* Botón con estilos */
+            button {
+                padding: 14px 18px;
+                background-color: #667eea;
+                color: white;
+                border: none;
+                border-radius: 8px;
+                font-size: 16px;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                margin-top: 10px;
+            }
+
+            button:hover {
+                background-color: #764ba2;
+                transform: translateY(-2px);
+                box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            }
+
+            .form-links {
+                margin-top: 20px;
+                text-align: center;
+                color: #d0d0d0;
+                font-size: 14px;
+            }
+
+            .form-links a {
+                color: #38bdf8;
+                text-decoration: none;
+                font-weight: 600;
+            }
+
+            .form-links a:hover {
+                text-decoration: underline;
+            }
+
+            /* Footer */
+            footer {
+                background: #111;
+                text-align: center;
+                padding: 20px;
+                margin-top: 50px;
+                box-shadow: 0 -2px 10px rgba(255, 255, 255, 0.08);
+                font-size: 14px;
+                color: #ccc;
+            }
+
+            /* Responsive */
+            @media (max-width: 768px) {
+                main {
+                    margin: 20px auto;
+                    padding: 0 15px;
+                }
+
+                section {
+                    padding: 30px 20px;
+                }
+
+                h1 {
+                    font-size: 36px;
+                }
+
+                h2 {
+                    font-size: 24px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <img src="sportclub-logo.png" alt="Logo Sport Club" class="logo">
+            <h1>Club Deportivo</h1>
+            <nav>
+                <a href="index.html">Inicio</a>
+                <a href="#">Planes</a>
+                <a href="#">Reservas</a>
+            </nav>
+        </header>
+
+        <main>
+            <section>
+                <h2>Regístrate en nuestro club</h2>
+                <p>Únete a la comunidad deportiva más activa.</p>
+
+                <form id="registerForm">
+                    <!-- Campos obligatorios -->
+                    <input type="email" placeholder="Correo electrónico*" required>
+                    <input type="password" placeholder="Contraseña*" required>
+
+                    <!-- Campos opcionales -->
+                    <input type="text" placeholder="Nombre (opcional)">
+                    <input type="number" placeholder="Edad (opcional)" min="1" max="120">
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="practicaDeporte">
+                        <label for="practicaDeporte">¿Practicas deporte?</label>
+                    </div>
+
+                    <select id="tipoDeporte">
+                        <option value="">Tipo de deporte (opcional)</option>
+                        <option value="futbol">Fútbol</option>
+                        <option value="basketball">Baloncesto</option>
+                        <option value="tennis">Tenis</option>
+                        <option value="natacion">Natación</option>
+                        <option value="gimnasio">Gimnasio</option>
+                        <option value="running">Running</option>
+                        <option value="ciclismo">Ciclismo</option>
+                        <option value="otro">Otro</option>
+                    </select>
+
+                    <input type="text" placeholder="Objetivo personal (opcional)">
+
+                    <select>
+                        <option value="">Nivel (opcional)</option>
+                        <option value="principiante">Principiante</option>
+                        <option value="intermedio">Intermedio</option>
+                        <option value="avanzado">Avanzado</option>
+                    </select>
+
+                    <button type="submit">Registrarse</button>
+                </form>
+                <div class="form-links">
+                    <a href="index.html">Volver al login</a>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Copyright 2024 - Club Deportivo</p>
+        </footer>
+
+        <script>
+            document.getElementById('registerForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                const email = this.querySelector('input[type="email"]').value;
+                const password = this.querySelector('input[type="password"]').value;
+
+                if (email && password) {
+                    alert('¡Registro exitoso! Bienvenido al Club Deportivo.');
+                    // Aquí podrías redirigir al login o dashboard
+                    window.location.href = 'index.html';
+                } else {
+                    alert('Por favor, completa los campos obligatorios marcados con *.');
+                }
+            });
+
+            // Mostrar/ocultar campos opcionales basados en el checkbox
+            document.getElementById('practicaDeporte').addEventListener('change', function() {
+                const tipoDeporte = document.getElementById('tipoDeporte');
+                if (this.checked) {
+                    tipoDeporte.style.display = 'block';
+                } else {
+                    tipoDeporte.style.display = 'none';
+                    tipoDeporte.value = '';
+                }
+            });
+        </script>
+    </body>
+</html>
