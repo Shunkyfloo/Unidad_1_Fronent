@@ -14,14 +14,14 @@
             /* Fondo oscuro global */
             body {
                 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-                background-color: #2E1A47;
+                background-color: #000;
                 min-height: 100vh;
-                color: #FFFFFF;
+                color: #f5f5f5;
             }
 
             /* Header */
             header {
-                background: #2E1A47;
+                background: #111;
                 padding: 80px 30px 40px; /* espacio superior extra para logo posicionado */
                 text-align: center;
                 box-shadow: 0 2px 10px rgba(255, 255, 255, 0.08);
@@ -34,7 +34,7 @@
                 position: absolute;
                 top: 20px;
                 left: 20px;
-                max-width: 160px;
+                max-width: 140px;
                 height: auto;
             }
 
@@ -68,23 +68,21 @@
             /* Navegación con márgenes y padding */
             nav a {
                 display: inline-block;
-                margin: 0 18px;
-                padding: 12px 30px;
-                background: #F2B705;
-                color: #2E1A47;
+                margin: 0 20px;
+                padding: 12px 24px;
+                background: #667eea;
+                color: white;
                 text-decoration: none;
-                border-radius: 999px;
-                transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-                font-weight: 700;
+                border-radius: 25px;
+                transition: all 0.3s ease;
+                font-weight: 600;
                 font-size: 14px;
-                box-shadow: 0 10px 20px rgba(242, 183, 5, 0.18);
             }
 
             nav a:hover {
-                background: #F2B705;
-                color: #000;
+                background: #764ba2;
                 transform: translateY(-2px);
-                box-shadow: 0 0 24px rgba(242, 183, 5, 0.75), inset 0 0 8px rgba(255, 255, 255, 0.2);
+                box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
             }
 
             /* Contenedor centrado en pantalla */
@@ -96,12 +94,12 @@
 
             /* Card del formulario */
             section {
-                background: #2E1A47;
+                background: white;
                 padding: 50px;
                 margin: 20px;
                 border-radius: 15px;
-                border: 1px solid #333;
-                box-shadow: 0 8px 25px rgba(255, 255, 255, 0.08);
+                border: 1px solid #e0e5ea;
+                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
             }
 
             /* Contenedor del formulario */
@@ -111,263 +109,33 @@
                 gap: 20px;
             }
 
-            /* Hero Section */
-            .hero {
-                background: linear-gradient(135deg, #2E1A47 0%, #3d2460 100%);
-                padding: 100px 20px;
-                text-align: center;
-                position: relative;
-                overflow: hidden;
-            }
-
-            .hero::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(242,183,5,0.1)"/><circle cx="80" cy="40" r="1" fill="rgba(242,183,5,0.1)"/><circle cx="40" cy="80" r="1.5" fill="rgba(242,183,5,0.1)"/></svg>');
-                opacity: 0.5;
-            }
-
-            .hero-content {
-                position: relative;
-                z-index: 1;
-                max-width: 800px;
-                margin: 0 auto;
-            }
-
-            .hero h2 {
-                font-size: 42px;
-                font-weight: 700;
-                color: #F2B705;
-                margin-bottom: 20px;
-                line-height: 1.2;
-            }
-
-            .hero p {
-                font-size: 20px;
-                color: #FFFFFF;
-                margin-bottom: 40px;
-                max-width: 600px;
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-            .hero-stats {
-                display: flex;
-                justify-content: center;
-                gap: 60px;
-                margin-top: 40px;
-            }
-
-            .stat {
-                text-align: center;
-            }
-
-            .stat h3 {
-                font-size: 36px;
-                color: #F2B705;
-                font-weight: 700;
-                margin-bottom: 5px;
-            }
-
-            .stat p {
-                color: #FFFFFF;
-                font-size: 14px;
-                text-transform: uppercase;
-                letter-spacing: 1px;
-            }
-
-            /* About Section */
-            .about {
-                padding: 80px 20px;
-                background: #FFFFFF;
-                color: #2E1A47;
-            }
-
-            .about h2 {
-                text-align: center;
-                font-size: 36px;
-                color: #2E1A47;
-                margin-bottom: 50px;
-            }
-
-            .about-content {
-                max-width: 1200px;
-                margin: 0 auto;
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 60px;
-                align-items: center;
-            }
-
-            .about-text p {
-                font-size: 18px;
-                line-height: 1.6;
-                margin-bottom: 20px;
-                color: #2E1A47;
-            }
-
-            .about-features {
-                display: grid;
-                gap: 20px;
-            }
-
-            .feature {
-                background: #f8f9fa;
-                padding: 25px;
-                border-radius: 10px;
-                border-left: 4px solid #F2B705;
-            }
-
-            .feature h4 {
-                color: #2E1A47;
-                font-size: 18px;
-                margin-bottom: 10px;
-            }
-
-            .feature p {
-                color: #666;
-                font-size: 14px;
-                line-height: 1.5;
-            }
-
-            /* Benefits Section */
-            .benefits {
-                padding: 80px 20px;
-                background: #2E1A47;
-                color: #FFFFFF;
-            }
-
-            .benefits h2 {
-                text-align: center;
-                font-size: 36px;
-                color: #F2B705;
-                margin-bottom: 50px;
-            }
-
-            .benefits-grid {
-                max-width: 1200px;
-                margin: 0 auto;
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-                gap: 30px;
-            }
-
-            .benefit-card {
-                background: rgba(255, 255, 255, 0.05);
-                padding: 30px;
+            section {
+                background: #1a1a1a;
+                padding: 50px;
+                margin: 20px;
                 border-radius: 15px;
-                text-align: center;
-                border: 1px solid rgba(242, 183, 5, 0.2);
-                transition: transform 0.3s ease, box-shadow 0.3s ease;
+                border: 1px solid #333;
+                box-shadow: 0 8px 25px rgba(255, 255, 255, 0.08);
             }
 
-            .benefit-card:hover {
-                transform: translateY(-5px);
-                box-shadow: 0 10px 30px rgba(242, 183, 5, 0.2);
-            }
-
-            .benefit-icon {
-                font-size: 48px;
-                margin-bottom: 20px;
-            }
-
-            .benefit-card h3 {
-                color: #F2B705;
-                font-size: 24px;
-                margin-bottom: 15px;
-            }
-
-            .benefit-card p {
-                color: #FFFFFF;
-                line-height: 1.6;
-            }
-
-            /* Vision Section */
-            .vision {
-                padding: 80px 20px;
-                background: #FFFFFF;
-                color: #2E1A47;
-            }
-
-            .vision h2 {
-                text-align: center;
-                font-size: 36px;
-                color: #2E1A47;
-                margin-bottom: 50px;
-            }
-
-            .vision-content {
-                max-width: 1200px;
-                margin: 0 auto;
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 60px;
-                align-items: center;
-            }
-
-            .vision-text p {
-                font-size: 18px;
-                line-height: 1.6;
-                margin-bottom: 20px;
-                color: #2E1A47;
-            }
-
-            .vision-text ul {
-                margin-left: 20px;
-                margin-bottom: 20px;
-            }
-
-            .vision-text li {
-                margin-bottom: 10px;
-                color: #2E1A47;
-            }
-
-            .vision-quote {
-                background: #2E1A47;
-                padding: 40px;
-                border-radius: 15px;
-                text-align: center;
-                color: #FFFFFF;
-            }
-
-            .vision-quote blockquote {
-                font-size: 24px;
-                font-style: italic;
-                line-height: 1.4;
-                margin-bottom: 20px;
-                color: #F2B705;
-            }
-
-            .vision-quote cite {
-                font-size: 16px;
-                color: #FFFFFF;
+            nav a {
+                display: inline-block;
+                margin: 0 20px;
+                padding: 12px 24px;
+                background: #38bdf8;
+                color: #000;
+                text-decoration: none;
+                border-radius: 25px;
+                transition: all 0.3s ease;
                 font-weight: 600;
+                font-size: 14px;
             }
 
-            /* Login Section */
-            .login-section {
-                padding: 80px 20px;
-                background: #2E1A47;
-                text-align: center;
-            }
-
-            .login-section h2 {
-                color: #F2B705;
-                font-size: 32px;
-                margin-bottom: 15px;
-            }
-
-            .login-section > p {
-                color: #FFFFFF;
-                font-size: 18px;
-                margin-bottom: 40px;
-                max-width: 600px;
-                margin-left: auto;
-                margin-right: auto;
+            nav a:hover {
+                background: #5eead4;
+                color: #000;
+                transform: translateY(-2px);
+                box-shadow: 0 5px 15px rgba(56, 189, 248, 0.4);
             }
 
             /* Inputs - márgenes, padding, bordes */
@@ -394,16 +162,15 @@
 
             input:focus {
                 outline: none;
-                border-color: #F2B705;
+                border-color: #667eea;
                 background-color: #fff;
-                color: #000;
-                box-shadow: 0 0 10px rgba(242, 183, 5, 0.3);
+                box-shadow: 0 0 10px rgba(102, 126, 234, 0.3);
             }
 
             /* Botón con estilos */
             button {
                 padding: 14px 18px;
-                background-color: #F2B705;
+                background-color: #667eea;
                 color: white;
                 border: none;
                 border-radius: 8px;
@@ -415,9 +182,9 @@
             }
 
             button:hover {
-                background-color: #F2B705;
+                background-color: #764ba2;
                 transform: translateY(-2px);
-                box-shadow: 0 5px 15px rgba(242, 183, 5, 0.4);
+                box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
             }
 
             .form-links {
@@ -439,64 +206,13 @@
 
             /* Footer */
             footer {
-                background: #2E1A47;
+                background: #111;
                 text-align: center;
                 padding: 20px;
                 margin-top: 50px;
                 box-shadow: 0 -2px 10px rgba(255, 255, 255, 0.08);
                 font-size: 14px;
                 color: #ccc;
-            }
-
-            /* Responsive */
-            @media (max-width: 768px) {
-                main {
-                    margin: 20px auto;
-                    padding: 0 15px;
-                }
-
-                section {
-                    padding: 30px 20px;
-                }
-
-                h1 {
-                    font-size: 36px;
-                }
-
-                h2 {
-                    font-size: 24px;
-                }
-
-                .hero h2 {
-                    font-size: 32px;
-                }
-
-                .hero p {
-                    font-size: 18px;
-                }
-
-                .hero-stats {
-                    flex-direction: column;
-                    gap: 20px;
-                }
-
-                .about-content,
-                .vision-content {
-                    grid-template-columns: 1fr;
-                    gap: 40px;
-                }
-
-                .benefits-grid {
-                    grid-template-columns: 1fr;
-                }
-
-                .benefit-card {
-                    padding: 20px;
-                }
-
-                .stat h3 {
-                    font-size: 28px;
-                }
             }
         </style>
     </head>
@@ -505,156 +221,30 @@
             <img src="sportclub-logo.png" alt="Logo Sport Club" class="logo">
             <h1>Club Deportivo</h1>  
             <nav>
-                <a href="#hero">Inicio</a>
-                <a href="#about">Sobre Nosotros</a>
-                <a href="#benefits">Beneficios</a>
-                <a href="#vision">Visión</a>
-                <a href="#login">Acceder</a>
+                <a href="#">Inicio</a>
+                <a href="#">Planes</a>
+                <a href="#">Reservas</a>
             </nav>
         </header>
         <main>
-            <!-- Hero Section -->
-            <section id="hero" class="hero">
-                <div class="hero-content">
-                    <h2>"El deporte no solo transforma tu cuerpo, transforma tu vida"</h2>
-                    <p>Únete a la comunidad que impulsa el cambio, el crecimiento y la superación personal a través del movimiento.</p>
-                    <div class="hero-stats">
-                        <div class="stat">
-                            <h3>500+</h3>
-                            <p>Miembros Activos</p>
-                        </div>
-                        <div class="stat">
-                            <h3>10+</h3>
-                            <p>Años de Experiencia</p>
-                        </div>
-                        <div class="stat">
-                            <h3>15</h3>
-                            <p>Profesionales Certificados</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- About Section -->
-            <section id="about" class="about">
-                <h2>Sobre Nuestro Club</h2>
-                <div class="about-content">
-                    <div class="about-text">
-                        <p>Somos más que un gimnasio. Somos una comunidad apasionada por el deporte que cree en el poder transformador del movimiento. Fundado con la visión de hacer que el fitness sea accesible para todos, nuestro club combina entrenamiento de élite con un ambiente familiar y motivador.</p>
-                        <p>Contamos con instalaciones de primer nivel, equipamiento moderno y un equipo de entrenadores altamente calificados que te guiarán en tu camino hacia una vida más saludable y activa.</p>
-                    </div>
-                    <div class="about-features">
-                        <div class="feature">
-                            <h4>🏆 Entrenamiento Personalizado</h4>
-                            <p>Programas adaptados a tus objetivos específicos</p>
-                        </div>
-                        <div class="feature">
-                            <h4>👥 Comunidad Apoyadora</h4>
-                            <p>Únete a un grupo motivado y solidario</p>
-                        </div>
-                        <div class="feature">
-                            <h4>🎯 Resultados Comprobados</h4>
-                            <p>Miles de historias de transformación exitosas</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Benefits Section -->
-            <section id="benefits" class="benefits">
-                <h2>Beneficios del Entrenamiento</h2>
-                <div class="benefits-grid">
-                    <div class="benefit-card">
-                        <div class="benefit-icon">💪</div>
-                        <h3>Mejora Física</h3>
-                        <p>Aumenta tu fuerza, resistencia y flexibilidad. Mejora tu composición corporal y salud cardiovascular.</p>
-                    </div>
-                    <div class="benefit-card">
-                        <div class="benefit-icon">🧠</div>
-                        <h3>Salud Mental</h3>
-                        <p>Reduce el estrés, mejora el sueño y aumenta la confianza. El ejercicio libera endorfinas que mejoran tu estado de ánimo.</p>
-                    </div>
-                    <div class="benefit-card">
-                        <div class="benefit-icon">🤝</div>
-                        <h3>Conexión Social</h3>
-                        <p>Forma parte de una comunidad activa. Comparte experiencias, motiva a otros y crea lazos duraderos.</p>
-                    </div>
-                    <div class="benefit-card">
-                        <div class="benefit-icon">🎯</div>
-                        <h3>Disciplina y Hábitos</h3>
-                        <p>Desarrolla disciplina, constancia y hábitos saludables que se extienden más allá del gimnasio.</p>
-                    </div>
-                    <div class="benefit-card">
-                        <div class="benefit-icon">⚡</div>
-                        <h3>Energía y Vitalidad</h3>
-                        <p>Aumenta tus niveles de energía, mejora tu productividad y disfruta de una vida más plena y activa.</p>
-                    </div>
-                    <div class="benefit-card">
-                        <div class="benefit-icon">🏃‍♂️</div>
-                        <h3>Prevención de Enfermedades</h3>
-                        <p>Reduce el riesgo de enfermedades crónicas como diabetes, hipertensión y problemas cardíacos.</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Vision Section -->
-            <section id="vision" class="vision">
-                <h2>Nuestra Visión Futura</h2>
-                <div class="vision-content">
-                    <div class="vision-text">
-                        <p>Imaginamos un mundo donde el deporte y la actividad física son parte integral de la vida diaria de todos. Nuestro objetivo es expandir nuestra comunidad y crear un impacto positivo en la sociedad, promoviendo estilos de vida saludables y activos.</p>
-                        <p>En los próximos años, planeamos:</p>
-                        <ul>
-                            <li>Expandir nuestras instalaciones con nuevas disciplinas deportivas</li>
-                            <li>Crear programas comunitarios para niños y adultos mayores</li>
-                            <li>Desarrollar una app móvil para seguimiento personalizado</li>
-                            <li>Establecer alianzas con empresas para programas corporativos</li>
-                            <li>Organizar eventos deportivos masivos que unan a la comunidad</li>
-                        </ul>
-                    </div>
-                    <div class="vision-quote">
-                        <blockquote>
-                            "No se trata solo de entrenar cuerpos, se trata de inspirar almas y construir una sociedad más fuerte y saludable."
-                        </blockquote>
-                        <cite>- Equipo Club Deportivo</cite>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Login Section -->
-            <section id="login" class="login-section">
-                <h2>Únete a Nuestra Comunidad</h2>
-                <p>¿Ya eres miembro? Inicia sesión para acceder a tu perfil y reservas.</p>
+            <section>
+                <h2>Bienvenido a mi club</h2>
+                <p>Entrena con los mejores Profesionales.</p>
                 
-                <form id="loginForm">
+                <form>
                     <input type="email" placeholder="Tu email..." required>
-                    <input type="password" placeholder="Tu contraseña..." required>
+                    <input type="text" placeholder="Tu nombre..." required>
                     <button type="submit">Ingresar</button>
                 </form>
                 <div class="form-links">
-                    <a href="recover.html">¿Olvidaste tu contraseña?</a>
+                    <a href="#">¿Olvidaste tu contraseña?</a>
                     <span> | </span>
-                    <a href="register.html">Regístrate</a>
+                    <a href="#">Regístrate</a>
                 </div>
             </section>
         </main>
         <footer>
             <p>Copyright 2024 - Club Deportivo</p>
         </footer>
-        <script>
-            document.getElementById('loginForm').addEventListener('submit', function(event) {
-                event.preventDefault(); // Previene el envío por defecto
-                
-                const email = this.querySelector('input[type="email"]').value;
-                const password = this.querySelector('input[type="password"]').value;
-                
-                if (email && password) {
-                    alert('¡Bienvenido! Has iniciado sesión con éxito.');
-                    // Aquí podrías redirigir o hacer más acciones
-                } else {
-                    alert('Por favor, completa todos los campos.');
-                }
-            });
-        </script>
     </body>
 </html>
