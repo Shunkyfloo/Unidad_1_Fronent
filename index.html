@@ -196,13 +196,20 @@
             }
 
             .form-links a {
-                color: #38bdf8;
+                display: inline-block;
+                margin: 6px 6px;
+                padding: 10px 18px;
+                background: #38bdf8;
+                color: #000;
                 text-decoration: none;
-                font-weight: 600;
+                font-weight: 700;
+                border-radius: 999px;
+                transition: transform 0.2s ease, background 0.2s ease;
             }
 
             .form-links a:hover {
-                text-decoration: underline;
+                background: #5eead4;
+                transform: translateY(-1px);
             }
 
             /* Footer */
@@ -240,7 +247,11 @@
                 <div class="form-links">
                     <a href="recover.html">¿Olvidaste tu contraseña?</a>
                     <span> | </span>
-                    <a href="dashboards.html">Dashboards</a>
+                    <a href="user-dashboard.html">Dashboard Usuario</a>
+                    <span> | </span>
+                    <a href="coach-dashboard.html">Dashboard Coach</a>
+                    <span> | </span>
+                    <a href="admin-dashboard.html">Dashboard Administrador</a>
                     <span> | </span>
                     <a href="register.html">Regístrate</a>
                 </div>
