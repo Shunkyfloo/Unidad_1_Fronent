@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Dashboards - Club Deportivo</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                background-color: #050608;
+                color: #f3f4f6;
+                min-height: 100vh;
+                line-height: 1.5;
+            }
+
+            header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                background: #0f172a;
+                padding: 22px 28px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            }
+
+            .logo {
+                display: flex;
+                align-items: center;
+            }
+
+            .logo img {
+                max-width: 160px;
+                height: auto;
+            }
+
+            .dashboards {
+                max-width: 1200px;
+                margin: 30px auto;
+                padding: 0 20px 50px;
+            }
+
+            .dashboard-card {
+                background: #111827;
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                border-radius: 24px;
+                overflow: hidden;
+                margin-bottom: 30px;
+                box-shadow: 0 18px 40px rgba(15, 23, 42, 0.35);
+            }
+
+            .dashboard-header {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: space-between;
+                gap: 16px;
+                padding: 24px 28px;
+                background: rgba(30, 41, 59, 0.95);
+            }
+
+            .dashboard-header h2 {
+                font-size: 24px;
+                margin-bottom: 6px;
+            }
+
+            .dashboard-header p {
+                color: #cbd5e1;
+                font-size: 14px;
+            }
+
+            .dashboard-nav {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 12px;
+            }
+
+            .dashboard-nav a,
+            .dashboard-actions button {
+                padding: 10px 18px;
+                border-radius: 999px;
+                font-weight: 700;
+                font-size: 13px;
+                border: none;
+                cursor: pointer;
+                transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+            }
+
+            .dashboard-nav a {
+                text-decoration: none;
+                color: #0f172a;
+                background: #7dd3fc;
+                box-shadow: 0 10px 20px rgba(125, 211, 252, 0.18);
+            }
+
+            .dashboard-nav a:hover,
+            .dashboard-actions button:hover {
+                transform: translateY(-2px);
+                filter: brightness(1.05);
+            }
+
+            .dashboard-actions {
+                display: flex;
+                gap: 12px;
+                flex-wrap: wrap;
+            }
+
+            .dashboard-actions button {
+                background: #334155;
+                color: #f8fafc;
+                box-shadow: 0 11px 20px rgba(15, 23, 42, 0.35);
+            }
+
+            .dashboard-actions button.edit {
+                background: #22c55e;
+            }
+
+            .dashboard-actions button.logout {
+                background: #ef4444;
+            }
+
+            .dashboard-body {
+                display: grid;
+                grid-template-columns: 1.1fr 1fr;
+                gap: 24px;
+                padding: 28px;
+            }
+
+            .dashboard-section {
+                background: rgba(15, 23, 42, 0.9);
+                border: 1px solid rgba(148, 163, 184, 0.12);
+                border-radius: 20px;
+                padding: 22px;
+            }
+
+            .dashboard-section h3 {
+                margin-bottom: 14px;
+                color: #e2e8f0;
+                font-size: 18px;
+            }
+
+            .dashboard-section ul,
+            .dashboard-section table {
+                width: 100%;
+            }
+
+            .dashboard-section ul {
+                list-style: none;
+                display: grid;
+                gap: 10px;
+            }
+
+            .dashboard-section li {
+                background: rgba(148, 163, 184, 0.08);
+                border-radius: 14px;
+                padding: 12px 14px;
+                color: #e2e8f0;
+            }
+
+            .dashboard-section table {
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            .dashboard-section th,
+            .dashboard-section td {
+                text-align: left;
+                padding: 12px 10px;
+            }
+
+            .dashboard-section th {
+                color: #94a3b8;
+                font-size: 13px;
+                letter-spacing: 0.03em;
+            }
+
+            .dashboard-section td {
+                color: #e2e8f0;
+                border-top: 1px solid rgba(148, 163, 184, 0.12);
+            }
+
+            .badge {
+                display: inline-flex;
+                align-items: center;
+                padding: 6px 12px;
+                border-radius: 999px;
+                font-size: 12px;
+                font-weight: 700;
+                color: #0f172a;
+                background: #7dd3fc;
+            }
+
+            .stats-grid {
+                display: grid;
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 16px;
+            }
+
+            .stat-card {
+                background: rgba(148, 163, 184, 0.12);
+                border-radius: 18px;
+                padding: 18px;
+                text-align: center;
+            }
+
+            .stat-card h4 {
+                color: #cbd5e1;
+                font-size: 14px;
+                margin-bottom: 10px;
+            }
+
+            .stat-card p {
+                font-size: 28px;
+                color: #f8fafc;
+                font-weight: 700;
+            }
+
+            .dashboard-user .dashboard-header {
+                border-left: 6px solid #22d3ee;
+            }
+
+            .dashboard-coach .dashboard-header {
+                border-left: 6px solid #4ade80;
+            }
+
+            .dashboard-admin .dashboard-header {
+                border-left: 6px solid #a855f7;
+            }
+
+            .dashboard-user .dashboard-nav a {
+                background: #22d3ee;
+            }
+
+            .dashboard-coach .dashboard-nav a {
+                background: #4ade80;
+            }
+
+            .dashboard-admin .dashboard-nav a {
+                background: #a855f7;
+                color: #fff;
+            }
+
+            .dashboard-user .dashboard-nav a:hover {
+                background: #33e9ff;
+            }
+
+            .dashboard-coach .dashboard-nav a:hover {
+                background: #5ef48c;
+            }
+
+            .dashboard-admin .dashboard-nav a:hover {
+                background: #bf7dff;
+            }
+
+            .dashboard-user .dashboard-body {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            @media (max-width: 980px) {
+                .dashboard-body {
+                    grid-template-columns: 1fr;
+                }
+
+                .stats-grid {
+                    grid-template-columns: 1fr;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                <img src="sportclub-logo.png" alt="Logo Sport Club">
+            </div>
+        </header>
+
+        <section class="dashboards">
+            <article class="dashboard-card dashboard-user">
+                <div class="dashboard-header">
+                    <div>
+                        <h2>Dashboard Usuario</h2>
+                        <p>Panel personal para el usuario del club.</p>
+                    </div>
+                    <div class="dashboard-actions">
+                        <button class="edit">Editar perfil</button>
+                        <button class="logout">Cerrar sesión</button>
+                    </div>
+                </div>
+                <div class="dashboard-body">
+                    <div class="dashboard-section">
+                        <h3>Información del usuario</h3>
+                        <ul>
+                            <li><strong>Nombre:</strong> Paula Gómez</li>
+                            <li><strong>Correo:</strong> paula@example.com</li>
+                            <li><strong>Interés:</strong> Funcional y Spinning</li>
+                        </ul>
+                    </div>
+                    <div class="dashboard-section">
+                        <h3>Reservas recientes</h3>
+                        <ul>
+                            <li>Clase de Crossfit – Lunes 18:00</li>
+                            <li>Sesión de Yoga – Miércoles 10:00</li>
+                            <li>Spinning – Viernes 19:30</li>
+                        </ul>
+                    </div>
+                    <div class="dashboard-section">
+                        <h3>Clases disponibles</h3>
+                        <ul>
+                            <li>Yoga</li>
+                            <li>Funcional</li>
+                            <li>Spinning</li>
+                            <li>HIIT</li>
+                        </ul>
+                    </div>
+                    <div class="dashboard-section">
+                        <h3>Acceso rápido</h3>
+                        <p class="badge">Inicio</p>
+                        <p class="badge">Reservas</p>
+                        <p class="badge">Perfil</p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="dashboard-card dashboard-coach">
+                <div class="dashboard-header">
+                    <div>
+                        <h2>Dashboard Coach</h2>
+                        <p>Panel de gestión para el entrenador.</p>
+                    </div>
+                    <div class="dashboard-actions">
+                        <button class="edit">Editar perfil</button>
+                        <button class="logout">Cerrar sesión</button>
+                    </div>
+                </div>
+                <div class="dashboard-body">
+                    <div class="dashboard-section">
+                        <h3>Lista de alumnos</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Correo</th>
+                                    <th>Acción</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Mateo Pérez</td>
+                                    <td>mateo@mail.com</td>
+                                    <td>Ver progreso</td>
+                                </tr>
+                                <tr>
+                                    <td>Ana Rojas</td>
+                                    <td>ana@mail.com</td>
+                                    <td>Ver progreso</td>
+                                </tr>
+                                <tr>
+                                    <td>Lucía Díaz</td>
+                                    <td>lucia@mail.com</td>
+                                    <td>Ver progreso</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="dashboard-section">
+                        <h3>Clases asignadas</h3>
+                        <ul>
+                            <li>Entrenamiento funcional – Martes 19:00</li>
+                            <li>Boxeo avanzado – Jueves 17:00</li>
+                            <li>Spinning – Sábado 09:00</li>
+                        </ul>
+                    </div>
+                    <div class="dashboard-section">
+                        <h3>Horarios del coach</h3>
+                        <ul>
+                            <li>Lunes: 18:00 - 20:00</li>
+                            <li>Martes: 16:00 - 19:00</li>
+                            <li>Miércoles: 10:00 - 12:00</li>
+                            <li>Viernes: 17:00 - 20:00</li>
+                        </ul>
+                    </div>
+                    <div class="dashboard-section">
+                        <h3>Acceso rápido</h3>
+                        <p class="badge">Inicio</p>
+                        <p class="badge">Alumnos</p>
+                        <p class="badge">Clases</p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="dashboard-card dashboard-admin">
+                <div class="dashboard-header">
+                    <div>
+                        <h2>Dashboard Administrador</h2>
+                        <p>Panel de control para la administración del sistema.</p>
+                    </div>
+                    <div class="dashboard-actions">
+                        <button class="edit">Editar perfil</button>
+                        <button class="logout">Cerrar sesión</button>
+                    </div>
+                </div>
+                <div class="dashboard-body">
+                    <div class="dashboard-section">
+                        <h3>Gestión de usuarios</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Usuario</th>
+                                    <th>Rol</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Paula Gómez</td>
+                                    <td>Usuario</td>
+                                </tr>
+                                <tr>
+                                    <td>Marco Silva</td>
+                                    <td>Coach</td>
+                                </tr>
+                                <tr>
+                                    <td>Laura Méndez</td>
+                                    <td>Admin</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="dashboard-section">
+                        <h3>Estadísticas del sistema</h3>
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <h4>Total usuarios</h4>
+                                <p>128</p>
+                            </div>
+                            <div class="stat-card">
+                                <h4>Total clases</h4>
+                                <p>24</p>
+                            </div>
+                            <div class="stat-card">
+                                <h4>Usuarios activos</h4>
+                                <p>93</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dashboard-section">
+                        <h3>Panel de control</h3>
+                        <ul>
+                            <li>Usuarios activos hoy: 37</li>
+                            <li>Clases del día: 8</li>
+                            <li>Reportes pendientes: 2</li>
+                        </ul>
+                    </div>
+                    <div class="dashboard-section">
+                        <h3>Acceso rápido</h3>
+                        <p class="badge">Usuarios</p>
+                        <p class="badge">Reportes</p>
+                        <p class="badge">Configuración</p>
+                    </div>
+                </div>
+            </article>
+        </section>
+    </body>
+</html>
