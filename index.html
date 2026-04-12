@@ -3,6 +3,9 @@
     <head>
         <meta charset="UTF-8">
         <title>Club Deportivo</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
         <style>
             /* Reset y estilos base */
             * {
@@ -116,6 +119,7 @@
                 border-radius: 15px;
                 border: 1px solid #333;
                 box-shadow: 0 8px 25px rgba(255, 255, 255, 0.08);
+                overflow: hidden;
             }
 
             nav a {
@@ -189,27 +193,44 @@
             }
 
             .form-links {
-                margin-top: 20px;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                gap: 10px 6px;
+                margin-top: 24px;
+                margin-left: -50px;
+                margin-right: -50px;
+                margin-bottom: -50px;
+                padding: 18px 16px 22px;
                 text-align: center;
-                color: #d0d0d0;
-                font-size: 14px;
+                background-color: #121212;
+                border-top: 1px solid #2a2a2a;
+                border-bottom: 1px solid #0a0a0a;
+                font-family: "Press Start 2P", system-ui, sans-serif;
+                font-size: 9px;
+                line-height: 1.8;
+                -webkit-font-smoothing: none;
+                -moz-osx-font-smoothing: unset;
             }
 
             .form-links a {
-                display: inline-block;
-                margin: 6px 6px;
-                padding: 10px 18px;
-                background: #38bdf8;
-                color: #000;
+                color: #00aeef;
                 text-decoration: none;
-                font-weight: 700;
-                border-radius: 999px;
-                transition: transform 0.2s ease, background 0.2s ease;
+                font-weight: normal;
+                transition: color 0.15s ease, text-shadow 0.15s ease;
+                text-shadow: 0 0 8px rgba(0, 174, 239, 0.35);
             }
 
             .form-links a:hover {
-                background: #5eead4;
-                transform: translateY(-1px);
+                color: #5ce1ff;
+                text-shadow: 0 0 10px rgba(92, 225, 255, 0.5);
+            }
+
+            .form-links .form-links-sep {
+                color: #d4d4d4;
+                user-select: none;
+                text-shadow: none;
             }
 
             /* Footer */
@@ -246,13 +267,13 @@
                 </form>
                 <div class="form-links">
                     <a href="recover.html">¿Olvidaste tu contraseña?</a>
-                    <span> | </span>
+                    <span class="form-links-sep">|</span>
                     <a href="user-dashboard.html">Dashboard Usuario</a>
-                    <span> | </span>
+                    <span class="form-links-sep">|</span>
                     <a href="coach-dashboard.html">Dashboard Coach</a>
-                    <span> | </span>
+                    <span class="form-links-sep">|</span>
                     <a href="admin-dashboard.html">Dashboard Administrador</a>
-                    <span> | </span>
+                    <span class="form-links-sep">|</span>
                     <a href="register.html">Regístrate</a>
                 </div>
             </section>
