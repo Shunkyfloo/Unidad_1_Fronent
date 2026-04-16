@@ -192,6 +192,23 @@
                 box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
             }
 
+            /* Mensaje de ingreso */
+            #ingresoMensaje {
+                margin-top: 10px;
+                padding: 12px 14px;
+                border-radius: 8px;
+                border: 1px solid rgba(52, 211, 153, 0.35);
+                background: rgba(16, 185, 129, 0.12);
+                color: #34d399;
+                display: none;
+                font-size: 14px;
+                line-height: 1.4;
+            }
+
+            #ingresoMensaje.visible {
+                display: block;
+            }
+
             .form-links {
                 display: flex;
                 flex-wrap: wrap;
@@ -265,6 +282,7 @@
                     <input type="password" placeholder="Tu contraseña..." required>
                     <button type="submit">Ingresar</button>
                 </form>
+                <div id="ingresoMensaje" role="status" aria-live="polite"></div>
                 <div class="form-links">
                     <a href="recover.html">¿Olvidaste tu contraseña?</a>
                     <span class="form-links-sep">|</span>
@@ -281,5 +299,49 @@
         <footer>
             <p>Copyright 2024 - Club Deportivo</p>
         </footer>
+
+        <script>
+            (function () {
+                const form = document.querySelector("form");
+                const emailInput = form.querySelector('input[type="email"]');
+                const passwordInput = form.querySelector('input[type="password"]');
+                const ingresoMensaje = document.getElementById("ingresoMensaje");
+                const submitButton = form.querySelector('button[type="submit"]');
+
+                // Mantiene el mensaje si recargas la página (sin backend).
+                let ingresado = localStorage.getItem("ingresado") === "true";
+
+                if (ingresado) {
+                    ingresoMensaje.textContent = "Ya está ingresado.";
+                    ingresoMensaje.classList.add("visible");
+                    submitButton.disabled = true;
+                    submitButton.textContent = "Ingresado";
+                }
+
+                form.addEventListener("submit", function (e) {
+                    e.preventDefault();
+
+                    // El navegador ya valida los campos required, pero dejamos esto por seguridad.
+                    if (!emailInput.value || !passwordInput.value) {
+                        ingresoMensaje.textContent = "Completa tu email y contraseña.";
+                        ingresoMensaje.classList.add("visible");
+                        return;
+                    }
+
+                    if (ingresado) {
+                        ingresoMensaje.textContent = "Ya está ingresado.";
+                        ingresoMensaje.classList.add("visible");
+                        return;
+                    }
+
+                    ingresado = true;
+                    localStorage.setItem("ingresado", "true");
+                    ingresoMensaje.textContent = "Ingreso exitoso: ya está ingresado.";
+                    ingresoMensaje.classList.add("visible");
+                    submitButton.disabled = true;
+                    submitButton.textContent = "Ingresado";
+                });
+            })();
+        </script>
     </body>
 </html>
