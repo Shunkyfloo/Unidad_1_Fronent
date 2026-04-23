@@ -170,12 +170,12 @@
             </div>
             <div class="actions">
                 <button class="action-button edit">Editar perfil</button>
-                <a href="index.html" class="action-button logout">Cerrar sesión</a>
+                <a id="logout" href="index.html" class="action-button logout">Cerrar sesión</a>
             </div>
         </header>
         <main class="content">
             <div class="panel">
-                <h2>Panel de Administrador</h2>
+                <h2>Panel de Administrador: <span id="userName"></span></h2>
                 <p>Controla usuarios, revisa estadísticas y administra el sistema desde aquí.</p>
                 <div class="dashboard-grid">
                     <section>
@@ -232,4 +232,5 @@
             </div>
         </main>
     </body>
+    <script src="dashboard-auth.js"></script>
 </html>

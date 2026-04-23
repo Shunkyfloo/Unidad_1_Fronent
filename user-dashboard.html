@@ -152,12 +152,12 @@
             <div class="actions">
                 <a href="dashboards.html" class="action-button back">Volver</a>
                 <button class="action-button edit">Editar perfil</button>
-                <a href="index.html" class="action-button logout">Cerrar sesión</a>
+                <a id="logout" href="index.html" class="action-button logout">Cerrar sesión</a>
             </div>
         </header>
         <main class="content">
             <div class="panel">
-                <h2>Bienvenido, Paula Gómez</h2>
+                <h2>Bienvenido, <span id="userName"></span></h2>
                 <p>Este es tu espacio personal para revisar tus datos, tus reservas y las clases disponibles.</p>
                 <div class="dashboard-grid">
                     <section>
@@ -189,4 +189,5 @@
             </div>
         </main>
     </body>
+    <script src="dashboard-auth.js"></script>
 </html>
