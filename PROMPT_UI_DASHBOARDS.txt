@@ -1,0 +1,70 @@
+PROMPT PARA IA O DESARROLLO — DASHBOARDS CLUB DEPORTIVO (FRONTEND + API)
+================================================================================
+
+CONTEXTO
+--------
+Proyecto frontend estático (HTML/CSS/JS) que consume una API Node/Express en
+http://localhost:3000 (login JWT, registro, CRUD usuarios para admin).
+Hay tres roles: user, coach, admin.
+
+OBJETIVO DE LA INTERFAZ
+-----------------------
+1) Todos los roles comparten una barra superior limpia (sin botón rojo de
+   "cerrar sesión" tipo alarma). El cierre de sesión es un enlace discreto
+   (texto subrayado, color gris).
+
+2) Enlace o botón destacado "Editar perfil" en la barra superior que NO abre
+   un modal: debe REDIRIGIR a una página dedicada perfil.html donde el usuario
+   autenticado edita nombre, email, fecha de nacimiento y contraseña opcional,
+   guardando con PUT /api/users/:id y token Bearer.
+
+3) DASHBOARDS SIMPLIFICADOS (solo contenido operativo, sin tablas demo de
+   relleno ni muchas secciones):
+   - Usuario (user-dashboard.html): únicamente secciones "Mis reservas" y
+     "Mi avance". Datos de demo pueden persistirse en localStorage por user id
+     para el laboratorio (no mezclar con datos sensibles reales).
+   - Coach (coach-dashboard.html): resumen corto (vista rápida) + enlace claro
+     a coach-reservas.html.
+   - Admin (admin-dashboard.html): solo enlaces de acceso: "Ver perfiles"
+     (CRUD API) y "Editar perfil". Sin tablas de usuarios embebidas en el home.
+
+4) ADMIN — Página admin-perfiles.html
+   - Listado GET /api/users con filtro por rol, crear POST, editar PUT,
+     eliminar DELETE (según permisos del backend).
+   - Diálogos o formularios para alta/edición de usuario.
+
+5) COACH — Página coach-reservas.html
+   - La API del curso no expone endpoints de reservas: implementar CRUD de
+     reservas y de "organización de participantes" en localStorage del
+     navegador, con tablas y formularios (crear/editar/eliminar filas).
+   - Debe quedar claro en la UI que es almacenamiento local para la actividad.
+
+6) AUTENTICACIÓN DE PÁGINAS
+   - dashboard-auth.js protege rutas por rol (user-dashboard solo user, etc.).
+   - perfil.html: cualquier usuario logueado (solo exige sesión válida).
+
+7) ESTILOS
+   - Reutilizar dashboard-shell.css para coherencia visual entre páginas.
+
+ARCHIVOS CLAVE
+--------------
+- club-api.js          → fetch, base URL, sesión en localStorage
+- dashboard-auth.js  → /api/auth/me, redirección por rol, logout
+- perfil.html + perfil.js
+- user-dashboard.html + user-dashboard.js
+- coach-dashboard.html + coach-dashboard.js
+- coach-reservas.html + coach-reservas.js
+- admin-dashboard.html
+- admin-perfiles.html + admin-users.js
+
+CRITERIOS DE ACEPTACIÓN
+-----------------------
+- No hay modal de perfil en dashboards; la edición es solo en perfil.html.
+- No hay botón de logout rojo circular; es enlace discreto.
+- Admin no mezcla CRUD masivo en el home: va a admin-perfiles.html.
+- Coach gestiona reservas/listas en coach-reservas.html con CRUD local.
+- Mensajes de error de red al crear usuario/registro deben orientar a levantar
+  el backend y usar Live Server.
+
+================================================================================
+(Fin del prompt — copiar desde la línea CONTEXTO hasta aquí para reutilizar.)

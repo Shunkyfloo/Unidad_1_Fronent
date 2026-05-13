@@ -9,6 +9,8 @@
     "user-dashboard.html": "user",
     "coach-dashboard.html": "coach",
     "admin-dashboard.html": "admin",
+    "admin-perfiles.html": "admin",
+    "coach-reservas.html": "coach",
   };
 
   function pageFile() {
@@ -82,6 +84,13 @@
     if (!user || !user.role) {
       ClubAPI.clearSession();
       window.location.href = "index.html";
+      return;
+    }
+
+    var page = pageFile();
+    if (page === "perfil.html") {
+      setUserName(user);
+      bindLogout();
       return;
     }
 

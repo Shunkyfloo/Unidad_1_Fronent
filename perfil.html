@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Editar perfil — Club Deportivo</title>
+        <link rel="stylesheet" href="dashboard-shell.css">
+    </head>
+    <body>
+        <header class="app-top">
+            <div class="brand">
+                <img src="sportclub-logo.png" alt="Club Deportivo">
+                <h1>Editar perfil</h1>
+            </div>
+            <nav>
+                <a id="linkVolverPanel" class="nav-pill" href="#">Volver al panel</a>
+                <button type="button" class="logout-link" id="logout">Cerrar sesión</button>
+            </nav>
+        </header>
+        <main class="shell-main">
+            <div class="panel">
+                <h2>Hola, <span id="userName"></span></h2>
+                <p class="lead">Actualiza tus datos. La contraseña solo se cambia si escribes una nueva (mínimo 8 caracteres, letras y números).</p>
+                <div class="form-stack">
+                    <div>
+                        <label for="pfFullName">Nombre completo</label>
+                        <input id="pfFullName" type="text" autocomplete="name">
+                    </div>
+                    <div>
+                        <label for="pfEmail">Correo</label>
+                        <input id="pfEmail" type="email" autocomplete="email">
+                    </div>
+                    <div>
+                        <label for="pfBirthDate">Fecha de nacimiento</label>
+                        <input id="pfBirthDate" type="date">
+                    </div>
+                    <div>
+                        <label for="pfPassword">Nueva contraseña (opcional)</label>
+                        <input id="pfPassword" type="password" autocomplete="new-password" placeholder="Dejar vacío para no cambiar">
+                    </div>
+                    <p id="pfMsg" class="msg" role="status"></p>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-primary" id="pfSave">Guardar cambios</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <script src="club-api.js"></script>
+        <script src="dashboard-auth.js"></script>
+        <script src="perfil.js"></script>
+    </body>
+</html>
