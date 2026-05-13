@@ -132,6 +132,60 @@
                     grid-template-columns: 1fr;
                 }
             }
+
+            dialog#profileDialog {
+                border: none;
+                border-radius: 16px;
+                padding: 0;
+                background: #0f172a;
+                color: #e5e7eb;
+                max-width: 440px;
+                width: calc(100% - 32px);
+            }
+
+            dialog#profileDialog::backdrop {
+                background: rgba(0, 0, 0, 0.65);
+            }
+
+            .profile-dialog-inner {
+                padding: 22px;
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .profile-dialog-inner input {
+                padding: 12px 14px;
+                border-radius: 8px;
+                border: 1px solid #334155;
+                background: #020617;
+                color: #f8fafc;
+            }
+
+            .profile-dialog-actions {
+                display: flex;
+                gap: 10px;
+                justify-content: flex-end;
+                margin-top: 8px;
+            }
+
+            .profile-dialog-actions button {
+                padding: 10px 16px;
+                border-radius: 999px;
+                border: none;
+                cursor: pointer;
+                font-weight: 600;
+            }
+
+            #pfSave {
+                background: #22c55e;
+                color: #052e16;
+            }
+
+            #pfCancel {
+                background: #334155;
+                color: #e2e8f0;
+            }
         </style>
     </head>
     <body>
@@ -145,7 +199,7 @@
                 <a href="#">Clases</a>
             </div>
             <div class="actions">
-                <button class="action-button edit">Editar perfil</button>
+                <button type="button" class="action-button edit js-open-profile">Editar perfil</button>
                 <a id="logout" href="index.html" class="action-button logout">Cerrar sesión</a>
             </div>
         </header>
@@ -154,6 +208,14 @@
                 <h2>Coach: <span id="userName"></span></h2>
                 <p>Panel del entrenador para gestionar alumnos, clases y horarios.</p>
                 <div class="dashboard-grid">
+                    <section>
+                        <h3 class="section-title">Mi perfil</h3>
+                        <ul>
+                            <li><strong>Nombre:</strong> <span id="profileFullName">—</span></li>
+                            <li><strong>Correo:</strong> <span id="profileEmail">—</span></li>
+                            <li><strong>Fecha de nacimiento:</strong> <span id="profileBirthDate">—</span></li>
+                        </ul>
+                    </section>
                     <section>
                         <h3 class="section-title">Lista de alumnos</h3>
                         <table>
@@ -203,6 +265,27 @@
                 </div>
             </div>
         </main>
+
+        <dialog id="profileDialog">
+            <div class="profile-dialog-inner">
+                <h3>Editar perfil</h3>
+                <label for="pfFullName">Nombre completo</label>
+                <input id="pfFullName" type="text" autocomplete="name">
+                <label for="pfEmail">Correo</label>
+                <input id="pfEmail" type="email" autocomplete="email">
+                <label for="pfBirthDate">Fecha de nacimiento</label>
+                <input id="pfBirthDate" type="date">
+                <label for="pfPassword">Nueva contraseña (opcional)</label>
+                <input id="pfPassword" type="password" autocomplete="new-password" placeholder="Dejar vacío para no cambiar">
+                <p id="pfMsg" style="min-height:1.2em;font-size:14px;"></p>
+                <div class="profile-dialog-actions">
+                    <button type="button" id="pfCancel">Cancelar</button>
+                    <button type="button" id="pfSave">Guardar</button>
+                </div>
+            </div>
+        </dialog>
+        <script src="club-api.js"></script>
+        <script src="dashboard-auth.js"></script>
+        <script src="profile-editor.js"></script>
     </body>
-    <script src="dashboard-auth.js"></script>
 </html>
