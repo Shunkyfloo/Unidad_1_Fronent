@@ -189,7 +189,15 @@
       if (dlg.close) dlg.close();
       await loadUsers();
     } catch (e) {
-      dlgMsg.textContent = (e && e.data && e.data.message) || e.message || "Error al guardar.";
+      var m = (e && e.data && e.data.message) || e.message || "Error al guardar.";
+      if (e && e.status === 0) {
+        m = e.message || m;
+      }
+      if (e && e.data && e.data.errors && typeof e.data.errors === "object") {
+        var parts = Object.values(e.data.errors).filter(Boolean);
+        if (parts.length) m = parts.join(" ");
+      }
+      dlgMsg.textContent = m;
     } finally {
       btn.disabled = false;
     }

@@ -41,7 +41,22 @@
     if (init.body && typeof init.body === "object" && !(init.body instanceof FormData)) {
       init.body = JSON.stringify(init.body);
     }
-    const res = await fetch(API_BASE + path, init);
+
+    let res;
+    try {
+      res = await fetch(API_BASE + path, init);
+    } catch (networkErr) {
+      const err = new Error(
+        "No se pudo conectar con la API en " +
+          API_BASE +
+          ". Arranca el backend (carpeta backend: npm install y luego npm run dev) y abre el sitio con Live Server, no como archivo file://."
+      );
+      err.status = 0;
+      err.data = { message: err.message };
+      err.cause = networkErr;
+      throw err;
+    }
+
     const data = await res.json().catch(function () {
       return {};
     });

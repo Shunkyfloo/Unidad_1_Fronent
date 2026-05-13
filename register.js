@@ -116,6 +116,9 @@
       }, 1200);
     } catch (err) {
       var msg = "No fue posible completar el registro.";
+      if (err && err.message && err.status === 0) {
+        msg = err.message;
+      }
       if (err && err.data) {
         if (err.data.errors && typeof err.data.errors === "object") {
           var errs = err.data.errors;
@@ -125,6 +128,10 @@
           if (errs.birth_date) setFieldError("errBirthDate", errs.birth_date);
         }
         if (err.data.message) msg = err.data.message;
+      }
+      if (err && err.status === 409) {
+        msg = err.data && err.data.message ? err.data.message : "Ese correo ya está registrado. Usa otro email o inicia sesión.";
+        setFieldError("errEmail", "Correo ya registrado.");
       }
       showMessage(msg, "error");
     } finally {
