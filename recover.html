@@ -2,27 +2,24 @@
 <html lang="es">
     <head>
         <meta charset="UTF-8">
-        <title>Recuperar Contraseña - Club Deportivo</title>
+        <title>Recuperar contraseña — Club Deportivo</title>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
         <style>
-            /* Reset y estilos base */
             * {
                 margin: 0;
                 padding: 0;
                 box-sizing: border-box;
             }
 
-            /* Fondo oscuro global */
             body {
-                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
                 background-color: #000;
                 min-height: 100vh;
                 color: #f5f5f5;
             }
 
-            /* Header */
             header {
                 background: #111;
                 padding: 80px 30px 40px;
@@ -32,7 +29,6 @@
                 color: #f5f5f5;
             }
 
-            /* Logo en esquina superior izquierda */
             .logo {
                 position: absolute;
                 top: 20px;
@@ -41,7 +37,6 @@
                 height: auto;
             }
 
-            /* Tipografía - Títulos */
             h1 {
                 color: #fff;
                 font-size: 48px;
@@ -56,7 +51,6 @@
                 margin-bottom: 15px;
             }
 
-            /* Navegación con márgenes y padding */
             nav a {
                 display: inline-block;
                 margin: 0 20px;
@@ -77,29 +71,12 @@
                 box-shadow: 0 5px 15px rgba(56, 189, 248, 0.4);
             }
 
-            /* Main content */
-            h1 {
-                color: #fff;
-                font-size: 48px;
-                font-weight: 700;
-                margin-bottom: 20px;
-            }
-
-            h2 {
-                color: #e6e6e6;
-                font-size: 28px;
-                font-weight: 600;
-                margin-bottom: 15px;
-            }
-
-            /* Main content */
             main {
                 max-width: 500px;
                 margin: 50px auto;
                 padding: 0 20px;
             }
 
-            /* Sección del formulario */
             section {
                 background: #1a1a1a;
                 padding: 40px;
@@ -109,29 +86,32 @@
                 overflow: hidden;
             }
 
-            /* Contenedor del formulario */
-            form {
+            .step {
                 display: flex;
                 flex-direction: column;
-                gap: 20px;
+                gap: 18px;
             }
 
-            /* Inputs - márgenes, padding, bordes */
-            input,
-            button {
-                padding: 14px 18px;
-                border: 2px solid #ddd;
-                border-radius: 8px;
-                font-size: 16px;
-                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-                transition: all 0.3s ease;
+            .step[hidden] {
+                display: none !important;
+            }
+
+            p.lead {
+                color: #bbb;
+                font-size: 15px;
+                line-height: 1.5;
             }
 
             input {
                 width: 100%;
+                padding: 14px 18px;
+                border: 2px solid #444;
+                border-radius: 8px;
+                font-size: 16px;
+                font-family: inherit;
                 color: #f5f5f5;
                 background-color: #222;
-                border-color: #444;
+                transition: all 0.3s ease;
             }
 
             input::placeholder {
@@ -146,8 +126,8 @@
                 box-shadow: 0 0 10px rgba(102, 126, 234, 0.3);
             }
 
-            /* Botón con estilos */
-            button {
+            button[type="submit"],
+            .btn-login {
                 padding: 14px 18px;
                 background-color: #667eea;
                 color: white;
@@ -157,13 +137,64 @@
                 font-weight: 600;
                 cursor: pointer;
                 transition: all 0.3s ease;
-                margin-top: 10px;
+                margin-top: 6px;
+                text-decoration: none;
+                display: inline-block;
+                text-align: center;
             }
 
-            button:hover {
+            button[type="submit"]:hover:not(:disabled),
+            .btn-login:hover {
                 background-color: #764ba2;
                 transform: translateY(-2px);
                 box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            }
+
+            button:disabled {
+                opacity: 0.65;
+                cursor: not-allowed;
+                transform: none;
+            }
+
+            .field-error {
+                color: #fca5a5;
+                font-size: 13px;
+                margin-top: -10px;
+            }
+
+            #recoverMsg {
+                padding: 12px 14px;
+                border-radius: 8px;
+                font-size: 14px;
+                display: none;
+                line-height: 1.4;
+            }
+
+            #recoverMsg.visible {
+                display: block;
+            }
+
+            #recoverMsg.error {
+                border: 1px solid rgba(239, 68, 68, 0.45);
+                background: rgba(239, 68, 68, 0.12);
+                color: #fca5a5;
+            }
+
+            #recoverMsg.success {
+                border: 1px solid rgba(52, 211, 153, 0.35);
+                background: rgba(16, 185, 129, 0.12);
+                color: #6ee7b7;
+            }
+
+            .success-block {
+                text-align: center;
+            }
+
+            .success-block p {
+                color: #86efac;
+                font-size: 16px;
+                margin-bottom: 20px;
+                line-height: 1.5;
             }
 
             .form-links {
@@ -184,8 +215,6 @@
                 font-family: "Press Start 2P", system-ui, sans-serif;
                 font-size: 9px;
                 line-height: 1.8;
-                -webkit-font-smoothing: none;
-                -moz-osx-font-smoothing: unset;
             }
 
             .form-links a {
@@ -201,32 +230,8 @@
                 text-shadow: 0 0 10px rgba(92, 225, 255, 0.5);
             }
 
-            .form-links .form-links-sep {
-                color: #d4d4d4;
-                user-select: none;
-                text-shadow: none;
-            }
-
-            /* Mensaje de confirmación */
-            .message {
-                display: none;
-                background-color: #222;
-                border: 1px solid #444;
-                border-radius: 8px;
-                padding: 15px;
-                margin-top: 20px;
-                text-align: center;
-                color: #4ade80;
-                font-weight: 600;
-            }
-
-            .message.show {
-                display: block;
-            }
-
-            /* Footer */
             footer {
-                background: #2E1A47;
+                background: #2e1a47;
                 text-align: center;
                 padding: 20px;
                 margin-top: 50px;
@@ -235,7 +240,6 @@
                 color: #ccc;
             }
 
-            /* Responsive */
             @media (max-width: 768px) {
                 main {
                     margin: 20px auto;
@@ -244,12 +248,6 @@
 
                 section {
                     padding: 30px 20px;
-                }
-
-                .form-links {
-                    margin-left: -20px;
-                    margin-right: -20px;
-                    margin-bottom: -30px;
                 }
 
                 h1 {
@@ -267,24 +265,41 @@
             <img src="sportclub-logo.png" alt="Logo Sport Club" class="logo">
             <h1>Club Deportivo</h1>
             <nav>
-                <a href="#">Inicio</a>
-                <a href="#">Planes</a>
-                <a href="#">Reservas</a>
+                <a href="index.html">Inicio / Login</a>
+                <a href="register.html">Registro</a>
             </nav>
         </header>
 
         <main>
             <section>
                 <h2>Recuperar contraseña</h2>
-                <p>Ingresa tu correo electrónico y te enviaremos un enlace para restablecer tu contraseña.</p>
 
-                <form id="recoverForm">
-                    <input type="email" placeholder="Correo electrónico" required>
-                    <button type="submit">Recuperar contraseña</button>
-                </form>
+                <div id="recoverMsg" role="status" aria-live="polite"></div>
 
-                <div id="confirmationMessage" class="message">
-                    Se ha enviado un enlace de recuperación a su correo electrónico.
+                <div id="stepEmail" class="step">
+                    <p class="lead">Ingresá el correo con el que te registraste. Si no está en el sistema, te avisamos.</p>
+                    <form id="formEmail" autocomplete="on">
+                        <input id="recoverEmail" name="email" type="email" placeholder="Correo electrónico" required autocomplete="email">
+                        <p id="errEmailStep" class="field-error" role="alert"></p>
+                        <button type="submit" id="btnCheckEmail">Continuar</button>
+                    </form>
+                </div>
+
+                <div id="stepPassword" class="step" hidden>
+                    <p class="lead">Ingresá tu nueva contraseña (mínimo 8 caracteres, con letras y números) y repetila.</p>
+                    <form id="formPassword" autocomplete="on">
+                        <input type="hidden" id="hiddenEmail" value="">
+                        <input id="newPassword" type="password" placeholder="Nueva contraseña" required autocomplete="new-password" minlength="8">
+                        <p id="errPassword" class="field-error" role="alert"></p>
+                        <input id="newPassword2" type="password" placeholder="Repetir nueva contraseña" required autocomplete="new-password" minlength="8">
+                        <p id="errPassword2" class="field-error" role="alert"></p>
+                        <button type="submit" id="btnSetPassword">Guardar nueva contraseña</button>
+                    </form>
+                </div>
+
+                <div id="stepDone" class="step success-block" hidden>
+                    <p>El cambio de contraseña fue exitoso. Ya podés volver al inicio de sesión e ingresar con tu correo y la nueva clave.</p>
+                    <a class="btn-login" href="index.html">Volver al login</a>
                 </div>
 
                 <div class="form-links">
@@ -297,23 +312,7 @@
             <p>Copyright 2024 - Club Deportivo</p>
         </footer>
 
-        <script>
-            document.getElementById('recoverForm').addEventListener('submit', function(event) {
-                event.preventDefault();
-
-                const email = this.querySelector('input[type="email"]').value;
-
-                if (email) {
-                    // Simular envío de email
-                    this.style.display = 'none';
-                    document.getElementById('confirmationMessage').classList.add('show');
-
-                    // Aquí en una aplicación real enviarías la solicitud al servidor
-                    console.log('Enviando enlace de recuperación a:', email);
-                } else {
-                    alert('Por favor, ingresa tu correo electrónico.');
-                }
-            });
-        </script>
+        <script src="club-api.js"></script>
+        <script src="recover.js"></script>
     </body>
 </html>

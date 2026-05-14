@@ -7,15 +7,6 @@
   const ingresoMensaje = document.getElementById("ingresoMensaje");
   const submitButton = form.querySelector('button[type="submit"]');
 
-  const users = [
-    { user: "user1@sportclub.cl", password: "1234", role: "user", name: "Usuario 1" },
-    { user: "user2@sportclub.cl", password: "1234", role: "user", name: "Usuario 2" },
-    { user: "coach1@sportclub.cl", password: "1234", role: "coach", name: "Coach 1" },
-    { user: "coach2@sportclub.cl", password: "1234", role: "coach", name: "Coach 2" },
-    { user: "admin1@sportclub.cl", password: "1234", role: "admin", name: "Admin 1" },
-    { user: "admin2@sportclub.cl", password: "1234", role: "admin", name: "Admin 2" },
-  ];
-
   const roleToDashboard = {
     user: "user-dashboard.html",
     coach: "coach-dashboard.html",
@@ -27,7 +18,6 @@
     ingresoMensaje.textContent = text;
     ingresoMensaje.classList.add("visible");
 
-    // Reutilizamos el mismo contenedor cambiando el estilo en línea.
     if (type === "error") {
       ingresoMensaje.style.borderColor = "rgba(239, 68, 68, 0.45)";
       ingresoMensaje.style.background = "rgba(239, 68, 68, 0.12)";
@@ -43,44 +33,60 @@
     return String(value || "").trim().toLowerCase();
   }
 
-  // Si ya hay usuario logueado, redirige a su dashboard.
-  const stored = localStorage.getItem("user");
-  if (stored) {
-    try {
-      const existingUser = JSON.parse(stored);
-      const next = existingUser?.role ? roleToDashboard[existingUser.role] : null;
-      if (next) window.location.href = next;
-    } catch {
-      localStorage.removeItem("user");
-    }
+  var existing = ClubAPI.getSession();
+  if (existing && existing.token && existing.user && existing.user.role) {
+    var nextDash = roleToDashboard[existing.user.role];
+    if (nextDash) window.location.href = nextDash;
   }
 
-  form.addEventListener("submit", function (e) {
+  form.addEventListener("submit", async function (e) {
     e.preventDefault();
 
-    const email = normalizeEmail(emailInput?.value);
-    const password = String(passwordInput?.value || "");
+    const email = normalizeEmail(emailInput && emailInput.value);
+    const password = String((passwordInput && passwordInput.value) || "");
 
     if (!email || !password) {
-      showMessage("No se pudo acceder al sitio", "error");
+      showMessage("Ingresa correo y contraseña.", "error");
       return;
     }
-
-    const match = users.find((u) => normalizeEmail(u.user) === email && u.password === password);
-    if (!match) {
-      showMessage("No se pudo acceder al sitio", "error");
-      return;
-    }
-
-    const sessionUser = { user: match.user.trim(), role: match.role, name: match.name };
-    localStorage.setItem("user", JSON.stringify(sessionUser));
 
     if (submitButton) {
       submitButton.disabled = true;
       submitButton.textContent = "Ingresando...";
     }
 
-    const next = roleToDashboard[match.role] || "index.html";
-    window.location.href = next;
+    try {
+      const res = await ClubAPI.apiJson("/api/auth/login", {
+        method: "POST",
+        skipAuth: true,
+        body: { email: email, password: password },
+      });
+
+      if (!res.ok || !res.data || !res.data.token || !res.data.user) {
+        showMessage("No se pudo acceder al sitio", "error");
+        return;
+      }
+
+      ClubAPI.setSession(res.data.token, res.data.user);
+      showMessage("Ingreso correcto. Redirigiendo…", "success");
+
+      const role = res.data.user.role;
+      const next = roleToDashboard[role] || "index.html";
+      window.location.href = next;
+    } catch (err) {
+      var msg = "No se pudo acceder al sitio";
+      if (err && err.data && err.data.errors) {
+        var parts = Object.values(err.data.errors).filter(Boolean);
+        if (parts.length) msg = parts.join(" ");
+      } else if (err && err.message) {
+        msg = err.message;
+      }
+      showMessage(msg, "error");
+    } finally {
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.textContent = "Ingresar";
+      }
+    }
   });
 })();
