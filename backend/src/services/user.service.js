@@ -56,10 +56,29 @@ async function deleteUser(id) {
   return true;
 }
 
+async function checkEmailRegistered(email) {
+  const normalized = String(email || '').trim().toLowerCase();
+  const user = await userRepository.findByEmail(normalized);
+  return !!user;
+}
+
+async function setPasswordByEmail(email, plainPassword) {
+  const normalized = String(email || '').trim().toLowerCase();
+  const user = await userRepository.findByEmail(normalized);
+  if (!user) {
+    const error = new Error('No se pudo encontrar una cuenta con ese correo electrónico.');
+    error.statusCode = 404;
+    throw error;
+  }
+  return userRepository.updateById(user.id, { password: plainPassword });
+}
+
 module.exports = {
   listUsers,
   getUserById,
   createUser,
   updateUser,
-  deleteUser
+  deleteUser,
+  checkEmailRegistered,
+  setPasswordByEmail
 };

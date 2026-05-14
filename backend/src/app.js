@@ -17,6 +17,8 @@ app.get('/', (req, res) => {
     docs: {
       login: 'POST /api/auth/login',
       register: 'POST /api/auth/register',
+      recoverCheck: 'POST /api/auth/recover/check-email',
+      recoverSet: 'POST /api/auth/recover/set-password',
       me: 'GET /api/auth/me',
       users: 'GET /api/users (admin)',
       userCrud: 'POST|PUT|DELETE /api/users (admin; PUT también para el propio perfil)'

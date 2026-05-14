@@ -1,0 +1,10 @@
+{
+  "name": "unidad-1-fronent",
+  "private": true,
+  "description": "Frontend Club Deportivo; scripts para instalar y arrancar la API sin cd manual.",
+  "scripts": {
+    "install-api": "npm install --prefix backend",
+    "api": "npm run dev --prefix backend",
+    "start": "npm run dev --prefix backend"
+  }
+}
